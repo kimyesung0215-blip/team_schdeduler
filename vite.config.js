@@ -15,11 +15,11 @@ export default defineConfig({
         theme_color: '#0f172a',
         background_color: '#0f172a',
         display: 'standalone',
-        start_url: '/team-scheduler/',
-        scope: '/team-scheduler/',
+        start_url: '/team_scheduler/',
+        scope: '/team_scheduler/',
         icons: [
-          { src: '/team-scheduler/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/team-scheduler/icon-512.png', sizes: '512x512', type: 'image/png' }
+          { src: '/team_scheduler/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/team_scheduler/icon-512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
