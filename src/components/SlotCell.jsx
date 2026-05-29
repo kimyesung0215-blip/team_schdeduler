@@ -1,19 +1,14 @@
 import { getColor } from '../lib/colors'
 
-// 하나의 30분 슬롯 셀
-// - people: 이 슬롯을 체크한 인물 배열
-// - isEditing: 현재 편집 중인 인물이 이 슬롯을 선택했는지
 export function SlotCell({ slotKey, activePeople, isMySlot, isHalfHour,
   onMouseDown, onMouseEnter }) {
-
   const count = activePeople.length
 
   return (
     <div
-      className={`relative select-none cursor-pointer border-slate-700
-        ${isHalfHour ? 'border-b border-dashed' : 'border-b'}
-        ${isMySlot ? 'ring-inset ring-1 ring-white/20' : ''}
-        h-4 min-w-0`}
+      className={`relative select-none cursor-pointer
+        ${isHalfHour ? 'border-b border-dashed border-slate-700/50' : 'border-b border-slate-700/80'}
+        h-5 min-w-0`}
       onMouseDown={() => onMouseDown(slotKey)}
       onMouseEnter={() => onMouseEnter(slotKey)}
       onTouchStart={(e) => { e.preventDefault(); onMouseDown(slotKey) }}
@@ -34,9 +29,18 @@ export function SlotCell({ slotKey, activePeople, isMySlot, isHalfHour,
         />
       ))}
 
+      {/* 내 슬롯 테두리 강조 */}
+      {isMySlot && (
+        <div className="absolute inset-0 ring-inset ring-1 ring-white/30 pointer-events-none" />
+      )}
+
       {/* 중첩 숫자 배지 */}
       {count >= 2 && (
-        <span className="absolute bottom-0 right-0.5 text-[8px] font-bold text-white/80 leading-none z-10">
+        <span
+          className="absolute bottom-0 right-0.5 text-[7px] font-black leading-none z-10
+            drop-shadow-[0_0_2px_rgba(0,0,0,0.9)]"
+          style={{ color: 'white' }}
+        >
           {count}
         </span>
       )}
